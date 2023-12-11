@@ -5,7 +5,7 @@ const cors = require('cors')
 const OpenAI = require('openai')
 
 const openai = new OpenAI({
-    apiKey: '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'
+    apiKey: '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'
 })
 
 app.use(cors())
@@ -30,6 +30,7 @@ app.use(async (req, res, next) => {
     next();
 
     res.status(200).json(response)
+    console.log(response)
 })
 
 module.exports = app
