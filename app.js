@@ -10,7 +10,7 @@ const openai = new OpenAI({
 
 app.use(cors())
 
-app.use(async (req, res, next) => {
+app.use(cors({origin: 'http://localhost:3000', optionsSuccessStatus: 200}),async (req, res, next) => {
     let messages = req.query.ques;
 
     const response = await openai.chat.completions.create({
