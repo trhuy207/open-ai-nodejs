@@ -5,7 +5,7 @@ const cors = require('cors')
 const OpenAI = require('openai')
 
 const openai = new OpenAI({
-    apiKey: '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'
+    apiKey: process.env.OPENAI_API_KEY
 })
 
 app.use(cors())
