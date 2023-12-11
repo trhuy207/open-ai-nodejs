@@ -5,12 +5,16 @@ const cors = require('cors')
 const OpenAI = require('openai')
 
 const openai = new OpenAI({
-    apiKey: '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'
+    apiKey: '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'
 })
 
 app.use(cors())
 
 app.use(async (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+    
     let messages = req.query.ques;
 
     const response = await openai.chat.completions.create({
@@ -25,7 +29,7 @@ app.use(async (req, res, next) => {
         presence_penalty: 0,
     });
 
-    res.json(response)
+    res.status(200).json(response)
 })
 
 module.exports = app
